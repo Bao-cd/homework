@@ -1,29 +1,43 @@
 # homework
-class homework
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <script src="vue.js"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/marked"></script>
+  <link rel="stylesheet" href=" sytle.css">
+
 </head>
 <body>
-    <div id="app">
-        <div v-if="isShow" style="background-color: #ccc;">我是bcd</div>
-         <div v-if="isShow" style="background-color: #ccc;">I am your father</div>
-          <button @click="isShow=!isShow">显示/隐藏</button>    
-    </div>
-    <script>
-      var vm=new Vue({
-          el:'#app',
+     <div id="notebook">
+       <div class="notebook">notebook</div>
+       <div class="input">
+         <textarea class="inputText" v-model="content">
+         </textarea>
+       </div>
+       <div class="markdown" >
+
+       </div>
+     </div>
+      <script>
+        const html=marked('**hello**')
+        console.log(html)
+
+        var vm =new Vue({
+          el:'#notebook',
           data:{
-              isShow: true
+            content:"hello world"
+          },
+          computed:{
+            previewMarked(){
+              return marked(this.content)
+            }
           }
-      })
-    
-    
-    </script> 
+        })
+      </script>
+
 </body>
 </html>
